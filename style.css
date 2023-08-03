@@ -97,3 +97,15 @@ html {
 .clear:hover {
   background-color: rgb(1, 109, 1);
 }
+.num {
+  display: flex;
+  justify-content: end;
+  min-height: 50px;
+  min-width: 100px;
+}
+.result {
+  display: flex;
+  justify-content: end;
+  min-height: 50px;
+  min-width: 100px;
+}
