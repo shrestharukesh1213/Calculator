@@ -64,47 +64,52 @@ numbers.forEach((item) => {
     } else if (operator) {
       num2 += item.textContent;
     }
+    currentDisplay.textContent = `${num1}${operator}${num2}`;
   });
 });
 
 operators.forEach((item) => {
   item.addEventListener("click", () => {
     if (item.textContent == "+") {
+      if (operator) {
+        operate(num1, num2, operator);
+      }
       operator = "+";
       operate(num1, num2, "+");
     } else if (item.textContent == "-") {
+      if (operator) {
+        operate(num1, num2, operator);
+      }
       operator = "-";
       operate(num1, num2, "-");
     } else if (item.textContent == "x") {
+      if (operator) {
+        operate(num1, num2, operator);
+      }
       operator = "x";
       operate(num1, num2, "x");
     } else if (item.textContent == "/") {
+      if (operator) {
+        operate(num1, num2, operator);
+      }
       operator = "/";
       operate(num1, num2, "/");
     }
+    currentDisplay.textContent = `${num1}${operator}${num2}`;
   });
 });
 
 equals.addEventListener("click", () => {
   operate(num1, num2, operator);
-});
-
-document.querySelector("body").addEventListener("click", () => {
   currentDisplay.textContent = `${num1}${operator}${num2}`;
 });
-// document.querySelector("body").addEventListener("click", () => {
-//   if (currentDisplay.textContent.includes("+")) {
-//     operate();
-//   } else if (currentDisplay.textContent.includes("-")) {
-//     operate();
-//   } else if (currentDisplay.textContent.includes("/")) {
-//     operate();
-//   } else if (
-//     currentDisplay.textContent.includes("x") ||
-//     result.textContent != "0"
-//   ) {
-//     operate();
-//   } else if (result.textContent == "NaN") {
-//     result.textContent = 0;
-//   }
-// });
+
+deleteButton.addEventListener("click", () => {
+  let length = currentDisplay.textContent.length;
+  currentDisplay.textContent = currentDisplay.textContent
+    .split("")
+    .splice(0, length - 1)
+    .toString()
+    .replaceAll(",", "");
+  console.log(currentDisplay.textContent);
+});
